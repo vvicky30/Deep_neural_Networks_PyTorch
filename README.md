@@ -45,3 +45,12 @@ optimizer.step()
 ```
 The value of params is updated when step is called. The optimizer looks into params.grad and updates params by subtracting learning_rate times grad from it, exactly as we did in without using optimizer.
 torch.optim module helps us to abstract away the specific optimization scheme with just passing a list of params. Since there are multiple optimization schemes to choose from, we just need to choose one for our problem and rest the underlying PyTorch library does the magic for us.
+
+### 4. Neural Network
+In PyTorch the torch.nn package defines a set of modules which are similar to the layers of a neural network. A module receives input tensors and computes output tensors. The torch.nn package also defines a set of useful loss functions that are commonly used when training neural networks.
+Steps of building a neural network are:
+* Neural Network Construction: Create the neural network layers. setting up parameters (weights, biases)
+* Forward Propagation: Calculate the predicted output. Measure error.
+* Back-propagation: After finding the error, we backward propagate our error gradient to update our weight parameters. We do this by taking the derivative of the error function with respect to the parameters of our NN.
+* Iterative Optimization: We want to minimize error as much as possible. We keep updating the parameters iteratively by gradient descent.
+
