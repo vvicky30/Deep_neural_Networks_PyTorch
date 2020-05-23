@@ -11,3 +11,12 @@ Now we will discuss key PyTorch Library modules like Tensors, Autograd, Optimize
 
 ### 1. Tensors
 Tensors are the workhorse of PyTorch. We can think of tensors as multi-dimensional arrays. PyTorch has an extensive library of operations on them provided by the torch module. PyTorch Tensors are very close to the very popular NumPy arrays . In fact, PyTorch features seamless interoperability with NumPy. Compared with NumPy arrays, PyTorch tensors have added advantage that both tensors and related operations can run on the CPU or GPU. The second important thing that PyTorch provides allows tensors to keep track of the operations performed on them that helps to compute gradients or derivatives of an output with respect to any of its inputs.
+
+### 2. Autograd
+Autograd is automatic differentiation system. What does automatic differentiation do? Given a network, it calculates the gradients automatically. When computing the forwards pass, autograd simultaneously performs the requested computations and builds up a graph representing the function that computes the gradient.
+How is this achieved?
+PyTorch tensors can remember where they come from in terms of the operations and parent tensors that originated them, and they can provide the chain of derivatives of such operations with respect to their inputs automatically. This is achieved through requires_grad, if set to True.
+'''
+t= torch.tensor([1.0, 0.0], requires_grad=True)
+'''
+After calculating the gradient, the value of the derivative is automatically populated as a grad attribute of the tensor. For any composition of functions with any number of tensors with requires_grad= True; PyTorch would compute derivatives throughout the chain of functions and accumulate their values in the grad attribute of those tensors.
