@@ -20,3 +20,28 @@ PyTorch tensors can remember where they come from in terms of the operations and
 t= torch.tensor([1.0, 0.0], requires_grad=True)
 ```
 After calculating the gradient, the value of the derivative is automatically populated as a grad attribute of the tensor. For any composition of functions with any number of tensors with requires_grad= True; PyTorch would compute derivatives throughout the chain of functions and accumulate their values in the grad attribute of those tensors.
+
+### 3. Optimizers
+Optimizers are used to update weights and biases i.e. the internal parameters of a model to reduce the error. Please refer to my another article for more details.
+PyTorch has an torch.optim package with various optimization algorithms like SGD (Stochastic Gradient Descent), Adam, RMSprop etc .
+Let us see how we can create one of the provided optimizers SGD or Adam.
+```
+import torch.optim as optim
+params = torch.tensor([1.0, 0.0], requires_grad=True)
+learning_rate = 1e-3
+## SGD
+optimizer = optim.SGD([params], lr=learning_rate)
+## Adam
+optimizer = optim.Adam([params], lr=learning_rate)
+```
+Without using optimizers, we would need to manually update the model parameters by something like:
+ ```
+ for params in model.parameters(): 
+       params -= params.grad * learning_rate
+```
+We can use the step() method from our optimizer to take a forward step, instead of manually updating each parameter.
+```
+optimizer.step()
+```
+The value of params is updated when step is called. The optimizer looks into params.grad and updates params by subtracting learning_rate times grad from it, exactly as we did in without using optimizer.
+torch.optim module helps us to abstract away the specific optimization scheme with just passing a list of params. Since there are multiple optimization schemes to choose from, we just need to choose one for our problem and rest the underlying PyTorch library does the magic for us.
