@@ -16,7 +16,7 @@ Tensors are the workhorse of PyTorch. We can think of tensors as multi-dimension
 Autograd is automatic differentiation system. What does automatic differentiation do? Given a network, it calculates the gradients automatically. When computing the forwards pass, autograd simultaneously performs the requested computations and builds up a graph representing the function that computes the gradient.
 How is this achieved?
 PyTorch tensors can remember where they come from in terms of the operations and parent tensors that originated them, and they can provide the chain of derivatives of such operations with respect to their inputs automatically. This is achieved through requires_grad, if set to True.
-'''
+```
 t= torch.tensor([1.0, 0.0], requires_grad=True)
-'''
+```
 After calculating the gradient, the value of the derivative is automatically populated as a grad attribute of the tensor. For any composition of functions with any number of tensors with requires_grad= True; PyTorch would compute derivatives throughout the chain of functions and accumulate their values in the grad attribute of those tensors.
