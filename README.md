@@ -11,7 +11,7 @@ Now we will discuss key PyTorch Library modules like Tensors, Autograd, Optimize
 
 ### 1. Tensors
 Tensors are the workhorse of PyTorch. We can think of tensors as multi-dimensional arrays. PyTorch has an extensive library of operations on them provided by the torch module. PyTorch Tensors are very close to the very popular NumPy arrays . In fact, PyTorch features seamless interoperability with NumPy. Compared with NumPy arrays, PyTorch tensors have added advantage that both tensors and related operations can run on the CPU or GPU. The second important thing that PyTorch provides allows tensors to keep track of the operations performed on them that helps to compute gradients or derivatives of an output with respect to any of its inputs.
-#### PyTorch supports multiple types of tensors, including:
+#### PyTorch supports multiple types of tensors, including:-
 1. FloatTensor: 32-bit float
 2. DoubleTensor: 64-bit float
 3. HalfTensor: 16-bit float
