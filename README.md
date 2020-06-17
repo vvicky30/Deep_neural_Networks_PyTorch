@@ -58,5 +58,5 @@ Steps of building a neural network are:
 * Neural Network Construction: Create the neural network layers. setting up parameters (weights, biases)
 * Forward Propagation: Calculate the predicted output. Measure error.
 * Back-propagation: After finding the error, we backward propagate our error gradient to update our weight parameters. We do this by taking the derivative of the error function with respect to the parameters of our NN.
-* Iterative Optimization: We want to minimize error as much as possible. We keep updating the parameters iteratively by gradient descent.
+* Iterative Optimization: We want to minimize error as much as possible. We keep updating the parameters iteratively by Gradient Descent.
 
