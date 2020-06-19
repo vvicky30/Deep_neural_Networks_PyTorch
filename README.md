@@ -60,3 +60,15 @@ Steps of building a neural network are:
 * Back-propagation: After finding the error, we backward propagate our error gradient to update our weight parameters. We do this by taking the derivative of the error function with respect to the parameters of our NN.
 * Iterative Optimization: We want to minimise error as much as possible. We keep updating the parameters iteratively by Gradient Descent.
 
+
+##TORCHVISION.DATASETS
+All datasets are subclasses of torch.utils.data.Dataset i.e, they have __getitem__ and __len__ methods implemented. Hence, they can all be passed to a torch.utils.data.DataLoader which can load multiple samples parallelly using torch.multiprocessing workers. For example:
+```
+imagenet_data = torchvision.datasets.ImageNet('path/to/imagenet_root/')
+data_loader = torch.utils.data.DataLoader(imagenet_data,
+                                          batch_size=4,
+                                          shuffle=True,
+                                          num_workers=args.nThreads)
+```
+
+
