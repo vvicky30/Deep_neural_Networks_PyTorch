@@ -102,3 +102,23 @@ data_loader = torch.utils.data.DataLoader(imagenet_data,
 * CelebA
 
 All the datasets have almost similar API. They all have two common arguments: transform and target_transform to transform the input and target respectively.
+
+## For making costom-module :-
+### CLASStorch.nn.Module
+Base class for all neural network modules.
+Your models should also subclass this class.
+Modules can also contain other Modules, allowing to nest them in a tree structure. You can assign the submodules as regular attributes:
+```
+import torch.nn as nn
+import torch.nn.functional as F
+
+class Model(nn.Module):
+    def __init__(self):
+        super(Model, self).__init__()
+        self.conv1 = nn.Conv2d(1, 20, 5)
+        self.conv2 = nn.Conv2d(20, 20, 5)
+
+    def forward(self, x):
+        x = F.relu(self.conv1(x))
+        return F.relu(self.conv2(x))
+```
