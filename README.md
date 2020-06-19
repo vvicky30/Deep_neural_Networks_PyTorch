@@ -61,7 +61,7 @@ Steps of building a neural network are:
 * Iterative Optimization: We want to minimise error as much as possible. We keep updating the parameters iteratively by Gradient Descent.
 
 
-##TORCHVISION.DATASETS
+## TORCHVISION.DATASETS
 All datasets are subclasses of torch.utils.data.Dataset i.e, they have __getitem__ and __len__ methods implemented. Hence, they can all be passed to a torch.utils.data.DataLoader which can load multiple samples parallelly using torch.multiprocessing workers. For example:
 ```
 imagenet_data = torchvision.datasets.ImageNet('path/to/imagenet_root/')
