@@ -71,4 +71,34 @@ data_loader = torch.utils.data.DataLoader(imagenet_data,
                                           num_workers=args.nThreads)
 ```
 
+#### The following datasets are available:
 
+* MNIST
+* Fashion-MNIST
+* KMNIST
+* EMNIST
+* QMNIST
+* FakeData
+* COCO
+* Captions
+* Detection
+* LSUN
+* ImageFolder
+* DatasetFolder
+* ImageNet
+* CIFAR
+* STL10
+* SVHN
+* PhotoTour
+* SBU
+* Flickr
+* VOC
+* Cityscapes
+* SBD
+* USPS
+* Kinetics-400
+* HMDB51
+* UCF101
+* CelebA
+
+All the datasets have almost similar API. They all have two common arguments: transform and target_transform to transform the input and target respectively.
