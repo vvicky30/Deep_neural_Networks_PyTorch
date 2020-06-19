@@ -122,3 +122,25 @@ class Model(nn.Module):
         x = F.relu(self.conv1(x))
         return F.relu(self.conv2(x))
 ```
+## AUTOMATIC DIFFERENTIATION PACKAGE - TORCH.AUTOGRAD
+torch.autograd provides classes and functions implementing automatic differentiation of arbitrary scalar valued functions. It requires minimal changes to the existing code - you only need to declare Tensor s for which gradients should be computed with the requires_grad=True keyword.
+```
+torch.autograd.backward(tensors, grad_tensors=None, retain_graph=None, create_graph=False, grad_variables=None)
+```
+Computes the sum of gradients of given tensors w.r.t. graph leaves.
+
+The graph is differentiated using the chain rule. If any of tensors are non-scalar (i.e. their data has more than one element) and require gradient, then the Jacobian-vector product would be computed, in this case the function additionally requires specifying grad_tensors. It should be a sequence of matching length, that contains the “vector” in the Jacobian-vector product, usually the gradient of the differentiated function w.r.t. corresponding tensors (None is an acceptable value for all tensors that don’t need gradient tensors).
+
+This function accumulates gradients in the leaves - you might need to zero them before calling it.
+* Parameters
+#### tensors (sequence of Tensor) –
+Tensors of which the derivative will be computed.
+
+#### grad_tensors (sequence of (Tensor or None)) –
+The “vector” in the Jacobian-vector product, usually gradients w.r.t. each element of corresponding tensors. None values can be specified for scalar Tensors or ones that don’t require grad. If a None value would be acceptable for all grad_tensors, then this argument is optional.
+
+#### retain_graph (bool, optional) –
+If False, the graph used to compute the grad will be freed. Note that in nearly all cases setting this option to True is not needed and often can be worked around in a much more efficient way. Defaults to the value of create_graph.
+
+#### create_graph (bool, optional) –
+If True, graph of the derivative will be constructed, allowing to compute higher order derivative products. Defaults to False.
